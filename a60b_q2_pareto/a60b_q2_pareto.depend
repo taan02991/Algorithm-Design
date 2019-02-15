@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1549910995 source:c:\users\taan\documents\c++\algorithm\a60b_q2_pareto\main.cpp
+	<iostream>
+	<vector>
+	<algorithm>
+

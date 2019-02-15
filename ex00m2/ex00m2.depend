@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1547567163 source:c:\users\taan\documents\c++\algorithm\ex00m2\main.cpp
+	<iostream>
+	<vector>
+	<map>
+	<algorithm>
+
