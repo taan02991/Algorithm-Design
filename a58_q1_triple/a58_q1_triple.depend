@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1550565944 source:c:\users\taan\documents\c++\algorithm\a58_q1_triple\main.cpp
+	<iostream>
+	<unordered_map>
+

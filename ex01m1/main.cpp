@@ -2,50 +2,54 @@
 
 using namespace std;
 
-void tiling(int n, int i, int j, int x, int y){
-    if(n == 2){
-        if(i == x && j == y) cout<<"0 ";
-        else if(i == x+1 && j == y) cout<<"1 ";
-        else if(i == x && j == y+1) cout<<"2 ";
-        else if(i == x+1 && j == y+1) cout<<"3 ";
-        cout<<x<<" "<<y<<"\n";
-        return;
+
+void S(int x, int y, int c, int r, int n){
+    int mx = c + n/2, my = r + n/2;
+    if(n == 1) return;
+//    S(x, y, c, r, n/2);
+//    S(x, y, c + n/2, r, n/2);
+//    S(x, y, c, r + n/2, n/2);
+//    S(x, y, c + n/2, r + n/2, n/2);
+//
+//    S(mx - 1, my - 1, c, r, n/2);
+//    S(mx, my - 1, c + n/2, r, n/2);
+//    S(mx - 1, my, c, r + n/2, n/2);
+//    S(mx, my, c + n/2, r + n/2, n/2);
+    else{
+        if(x < mx && y < my){
+            S(x, y, c, r, n/2);
+            S(mx, my - 1, c + n/2, r, n/2);
+            S(mx - 1, my, c, r + n/2, n/2);
+            S(mx, my, c + n/2, r + n/2, n/2);
+            printf("%d %d %d\n", 0, mx-1, my-1);
+        }
+        else if(x >= mx && y < my){
+            S(x, y, c + n/2, r, n/2);
+            S(mx - 1, my - 1, c, r, n/2);
+            S(mx - 1, my, c, r + n/2, n/2);
+            S(mx, my, c + n/2, r + n/2, n/2);
+            printf("%d %d %d\n", 1, mx-1, my-1);
+        }
+        else if(x < mx && y >= my){
+            S(mx - 1, my - 1, c, r, n/2);
+            S(mx, my - 1, c + n/2, r, n/2);
+            S(x, y, c, r + n/2, n/2);
+            S(mx, my, c + n/2, r + n/2, n/2);
+            printf("%d %d %d\n", 2, mx-1, my-1);
+        }
+        else{
+            S(x, y, c + n/2, r + n/2, n/2);
+            S(mx - 1, my - 1, c, r, n/2);
+            S(mx, my - 1, c + n/2, r, n/2);
+            S(mx - 1, my, c, r + n/2, n/2);
+            printf("%d %d %d\n", 3, mx-1, my-1);
+        }
     }
-    if(i < x + n/2 && j < y + n/2){
-        tiling(n/2, i, j, x, y);
-        tiling(n/2, x + n/2, y + n/2 -1, x + n/2, y);
-        tiling(n/2, x + n/2 - 1, y + n/2, x, y + n/2);
-        tiling(n/2, x + n/2, y + n/2, x + n/2, y +n/2);
-        cout<<"0 ";
-    }
-    else if(i >= x + n/2 && j < y + n/2){
-        tiling(n/2, x + n/2 - 1, y + n/2 - 1, x, y);
-        tiling(n/2, i, j, x + n/2, y);
-        tiling(n/2, x + n/2 - 1, y + n/2, x, y + n/2);
-        tiling(n/2, x + n/2, y + n/2, x + n/2, y +n/2);
-        cout<<"1 ";
-    }
-    else if(i < x + n/2 && j >= y + n/2){
-        tiling(n/2, x + n/2 - 1, y + n/2 - 1, x, y);
-        tiling(n/2, x + n/2, y + n/2 -1, x + n/2, y);
-        tiling(n/2, i, j, x, y + n/2);
-        tiling(n/2, x + n/2, y + n/2, x + n/2, y +n/2);
-        cout<<"2 ";
-    }
-    else if(i >= x + n/2 && j >= y + n/2){
-        tiling(n/2, x + n/2 - 1, y + n/2 - 1, x, y);
-        tiling(n/2, x + n/2, y + n/2 -1, x + n/2, y);
-        tiling(n/2, x + n/2 - 1, y + n/2, x, y + n/2);
-        tiling(n/2, i, j, x + n/2, y +n/2);
-        cout<<"3 ";
-    }
-    cout<<x + n/2 - 1<<" "<<y + n/2 -1<<"\n";
 }
 
-int main()
-{
-    int n, i, j;
-    cin>>n>>i>>j;
-    cout<<(n*n - 1)/3<<"\n";
-    tiling(n, i, j, 0, 0);
+int main(){
+    int x, y, n;
+    cin>>n>>x>>y;
+    cout<<(n*n-1)/3<<endl;
+    S(x, y, 0, 0, n);
 }

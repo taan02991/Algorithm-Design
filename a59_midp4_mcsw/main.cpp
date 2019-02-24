@@ -1,27 +1,25 @@
 #include <iostream>
+#include <deque>
 
 using namespace std;
 
-int n, w, MAX = -2000000000;
-
-void solve(int arr[],int index){
-    int maxnow = 0;
-    for(int i = 0; i < w; i++){
-        if(index + i >= n) break;
-        maxnow += arr[index + i];
-        if(maxnow > MAX) MAX = maxnow;
-        if(maxnow < 0) break;
-    }
-    if(index + 1 < n) solve(arr, index + 1);
-}
-
 int main()
 {
+    deque<int> dq;
+    int n, w, in, MAX = -2000000000;
     cin>>n>>w;
-    int arr[n];
-    for(int i = 0; i < n; i++){
-        cin>>arr[i];
+    int arr[n+1] = {};
+    for(int i = 1; i <= n; i++){
+        scanf("%d", &in);
+        arr[i] = arr[i-1] + in;
     }
-    solve(arr, 0);
+    dq.push_back(0);
+    for(int i = 1; i <= n; i++){
+        if(arr[i] - arr[dq.front()] > MAX) MAX = arr[i] - arr[dq.front()];
+        while(!dq.empty() && arr[dq.back()] >= arr[i]) dq.pop_back();
+        while(!dq.empty() && dq.front() <= i - w + 1) dq.pop_front();
+        dq.push_back(i);
+    }
     cout<<MAX;
+    return 0;
 }
