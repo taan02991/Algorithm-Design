@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1552658446 source:c:\users\taan\documents\c++\algorithm\a60b_q3_perimeter\main.cpp
+	<iostream>
+	<vector>
+	<queue>
+

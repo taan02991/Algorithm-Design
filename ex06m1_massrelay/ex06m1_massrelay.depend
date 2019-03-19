@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1552914158 source:c:\users\taan\documents\c++\algorithm\ex06m1_massrelay\main.cpp
+	<iostream>
+	<queue>
+

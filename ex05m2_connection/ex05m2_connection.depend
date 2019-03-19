@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1552732193 source:c:\users\taan\documents\c++\algorithm\ex05m2_connection\main.cpp
+	<iostream>
+	<vector>
+	<queue>
+

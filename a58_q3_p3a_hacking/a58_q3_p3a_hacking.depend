@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1552802691 source:c:\users\taan\documents\c++\algorithm\a58_q3_p3a_hacking\main.cpp
+	<iostream>
+	<vector>
+	<queue>
+

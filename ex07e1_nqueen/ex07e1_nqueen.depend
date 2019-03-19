@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1552994274 source:c:\users\taan\documents\c++\algorithm\ex07e1_nqueen\main.cpp
+	<iostream>
+	<vector>
+

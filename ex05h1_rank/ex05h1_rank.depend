@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1552847507 source:c:\users\taan\documents\c++\algorithm\ex05h1_rank\main.cpp
+	<iostream>
+	<vector>
+	<stack>
+

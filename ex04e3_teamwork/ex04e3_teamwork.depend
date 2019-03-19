@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1552742518 source:c:\users\taan\documents\c++\algorithm\ex04e3_teamwork\main.cpp
+	<iostream>
+	<vector>
+	<algorithm>
+

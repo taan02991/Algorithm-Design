@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1552635828 source:c:\users\taan\documents\c++\algorithm\ex05e3_catapult\main.cpp
+	<iostream>
+	<vector>
+	<stack>
+

@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1552317942 source:c:\users\taan\documents\c++\algorithm\a60a_q3_component\main.cpp
+	<iostream>
+	<vector>
+	<queue>
+
