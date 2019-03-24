@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1553090942 source:c:\users\taan\documents\c++\algorithm\a58_q3_p3_pandg\main.cpp
+	<iostream>
+	<vector>
+	<queue>
+	<algorithm>
+

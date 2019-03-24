@@ -4,58 +4,37 @@
 
 using namespace std;
 
-int r,c, X[] = {-1, 0, 1, 0}, Y[] = {0, -1, 0, 1};
-
-class node{
-public:
-    int x, y, d;
-    node(int x, int y, int d): x(x), y(y), d(d){}
-    bool operator<(const node &n)const{
-        return d > n.d;
-    }
-    void print(){
-        cout<<x<<" "<<y<<" "<<d<<endl;
-    }
-};
-
-void Prim(vector<vector<int>> &g, vector<vector<int>> &inMST, priority_queue<node> &d, vector<vector<int>> &ans){
-    while(!d.empty()){
-        node u = d.top(); d.pop();
-        while(inMST[u.x][u.y] && !d.empty()){
-            node u = d.top(); d.pop();
-        }
-        if(ans[u.x][u.y] > u.d)ans[u.x][u.y] = u.d;
-        inMST[u.x][u.y] = 1;
-        for(int k = 0; k < 4; k++){
-            int x = u.x + X[k], y = u.y + Y[k];
-            if(x < 0 || x >= r || y < 0 || y >= c) continue;
-            if(!inMST[x][y] && ans[u.x][u.y] + g[x][y] < ans[x][y]){
-                ans[x][y] = ans[u.x][u.y] + g[x][y];
-                d.push({x, y, ans[x][y]});
-            }
-        }
-    }
-}
 
 int main(){
+    int r,c, X[] = {1, -1, 0 , 0}, Y[] = {0, 0, 1, -1};
     cin>>r>>c;
-    vector<vector<int>> g(r), inMST(r), ans(r);
-    priority_queue<node> d;
+    vector<vector<int>> w(r);
+    int d[r][c], visited[r][c];
     for(int i = 0; i < r; i++){
         for(int j = 0; j < c; j++){
             int t;
-            scanf("%d", &t);
-            g[i].push_back(t);
-            inMST[i].push_back(0);
-            ans[i].push_back(2000000000);
-            if(i == 0 && j == 0) d.push({i, j, 0});
-            else d.push({i, j, 2000000000});
+            cin>>t;
+            w[i].push_back(t);
+            d[i][j] = 2000000000;
         }
     }
-    Prim(g, inMST, d, ans);
+    priority_queue<pair<int, pair<int, int>>> pq;
+    pq.push({0, {0, 0}});
+    while(!pq.empty()){
+        int x = pq.top().second.first, y = pq.top().second.second, dis = -pq.top().first;
+        pq.pop();
+        if(d[x][y] < 2000000000) continue;
+        d[x][y] = dis;
+        for(int i = 0; i < 4; i++){
+            int x2 = x + X[i], y2 = y + Y[i];
+            if(x2 < 0 || x2 >= r || y2 < 0 || y2 >= c) continue;
+            if(d[x2][y2] < 2000000000) continue;
+            pq.push({-(dis + w[x2][y2]), {x2, y2}});
+        }
+    }
     for(int i = 0; i < r; i++){
         for(int j = 0; j < c; j++){
-            cout<<ans[i][j]<<" ";
+            cout<<d[i][j]<<" ";
         }
         cout<<endl;
     }
